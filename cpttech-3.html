@@ -122,7 +122,7 @@
               </p>
               <h4 class="project-details__content-title">3 Tag des packages</h4>
               <p class="project-details__desc-para">
-                Parmi les étapes manuelles qui ralentissent l'équipe, le tag des projets est un sujet du fond du placard. Tagger un projet est important, c'est une méthode professionnelle qui permet de garder un suivi de l'état du projet quand il a été buildé pour la version correspondante. Mais on ne peux pas le rater : supprimer un tag enlève toute la confiance que l'on peux avoir dans ceux-ci, car leur intérêt est la certitude de savoir ce que la version déployée chez le client sur telle LTS contient. 
+                Parmi les étapes manuelles qui ralentissent l'équipe, le tag des projets est un sujet du fond du placard. Tagger un projet est important, c'est une méthode professionnelle qui permet de garder un suivi de l'état du projet quand il a été buildé pour la version correspondante. Mais on ne peux pas le rater : supprimer un tag enlève toute la confiance que l'on peux avoir dans ceux-ci, car leur intérêt est la certitude de savoir ce que la version déployée chez le client sur telle LTS contient.
                 Aussi dans notre processus de release avions nous une étape préliminaire qui consistait à tagger correctement chaque paquet de la livraison. J'ai écri deux scripts bash, un capable de tagger un paquet et un autre une liste de paquets. Au fur et à mesure du développement j'ai ajouté des fonctionnalités. Un mode --dry-run pour simuler le script sans l'effectuer, ce qui est bien pratique quand on travaille avec un processus que l'on ne veux pas louper, une interface d'aide et des messages d'erreur pertinent, un rapport sur l'utilisation du script multiple listant 1-ce qui a été taggué, 2-ce qui l'était déjà, 3-ce qui a rencontré une erreur.
                 L'étape finale de cette intégration a été de déployer ces scripts sur la machine jenkins et de les intégré dans la pipeline de release. C'est une pipeline scriptée, à l'instar de celle que j'ai décrite dans la partie précédente. Après quelques modifications du script et quelques versions d'essai, le tag manuel n'était plus qu'un souvenir.
               </p>
@@ -131,7 +131,7 @@
                 J'ai une bonne vision de l'utilisation de jenkins, mais la plateforme bénéficie de nombreux plugins et approches plus moderne que ce que nous avons. Il reste de la route à faire pour poursuivre la conversion de nos jobs en pipeline scriptée et s'approcher peu à peu de l'objectif suivant : avoir l'équivalence d'un commit dans la branche principale générant automatiquement une version de test déployée avec le code associé.
               </p>
               <p class="project-details__desc-para">
-                En outre, j'ai eu aussi l'occasion de découvrir ArgoCD à Intech, une autre plateforme de déploiement, plus à même de superviser les pipelines pour les architecture clusterisées. J'espère pouvoir la faire travailler de concert avec Jenkins quand l'occasion se présentera.              
+                En outre, j'ai eu aussi l'occasion de découvrir ArgoCD à Intech, une autre plateforme de déploiement, plus à même de superviser les pipelines pour les architecture clusterisées. J'espère pouvoir la faire travailler de concert avec Jenkins quand l'occasion se présentera.
               </p>
             </div>
               <div class="project-details__links">

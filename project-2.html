@@ -102,7 +102,7 @@
         <div class="project-details__content">
           <div class="project-details__showcase-img-cont">
             <img
-              src="./assets/jpeg/project-mockup-example.jpeg"
+              src="./assets/jpeg/debian-chicken.jpg"
               alt="Project Image"
               class="project-details__showcase-img"
             />
@@ -111,37 +111,38 @@
             <div class="project-details__desc">
               <h3 class="project-details__content-title">Project Overview</h3>
               <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Neque alias tenetur minus quaerat
-                aliquid, aut provident blanditiis, deleniti aspernatur ipsam
-                eaque veniam voluptatem corporis vitae mollitia laborum corrupti
-                ullam rem?
+                XiVO est une solution de communication Open Source qui repose sur de multiples composants embarqués dans des machines virtuelles (vm) et des containers docker. Pour la version supportée à long terme (lts) Izar, un objectif de la solution est de mettre à jour l'OS servant de base à nos machines virtuelles de Debian10 (buster) vers Debian11 (bullseye). La contrainte majeure imposée par cette migration est la nécessité de convertir nos anciens paquets fonctionnant avec python2 en python3. En effet, si la plupart des librairies étaient encore packagées avec python2 avec Debian10, Debian11 ne les contient pas.
               </p>
               <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem?
+                Pour l'entreprise, c'est surtout de continuer d'améliorer la solution et de réduire notre dette technique. Pour moi, c'est une occasion de monter en expérience et d'acquérir du savoir-faire.
+              </p>
+              <p class="project-details__desc-para">
+                Nous avons un temps limité puisque les changements sont souhaités pour Avril 2022. En outre, l'équipe est soumises à diverses demandes différentes qu'il faut parfois satisfaire en priorité.
+              </p>
+              <p class="project-details__desc-para">
+                Le travail de migration Python se place en continuité de la migration des premiers modules en été 2021, et a repris en décembre 2021.
+              </p>
+              <p class="project-details__desc-para">
+                Nous souhaitons réussir l'installation sur debain11 en maintenant notre chaîne d'intégration continue opérationnelle et en relevant le principal défi qui est la migration de python2 vers python3.
+              </p>
+              <p class="project-details__desc-para">
+                En premier j'ai réadapté le builder, une image docker capable de reproduire l'environnement de nos machines virtuelles et les outils de build. J'ai créé des versions spécifiques du builder pour qu'il soit adapté respectivement à debian10+python3 et debian11. Ensuite nous avons listés les paquets debian à migrer, 40 environ, reposant sur les technologies python. Certains étaient déjà prêt mais il y avait des changements à faire dans les fichiers de configuration debian de ces paquets.
+                Pour chacun d'entre eux, il a fallu s'assurer que leurs tests unitaires, et leurs test d'intégration passent avec les changements. En outre, nous avons migré les jobs jenkins de build pour utiliser le nouveau builder et nous les avons changé de plateforme. Enfin, nous avons effectués plusieurs installations préliminaires sur machine virtuelle.
+                Puis nous avons mergé les changements réussi et fait une release avec toute l'équipe de développement. Celle-ci a permi d'identifier un certains nombre de bugs et de fonctionnalités cassées que j'ai pu avec l'équipe projet dédiée fixée pendant la semaine suivante. Les derniers bugs étant en voie d'être fixés, j'ai pu rebuilder les paquets vers debian11 avec un builder adéquat recréé, et nous sommes en train de finaliser l'installation.
+              </p>
+              <p class="project-details__desc-para">
+                Nous avons pu effectuer une installation sur debian10 avec Python3 et résoudre les problèmes rencontrés, donc ce n'est qu'une question de temps avant que nous ne soyons prêt pour Debian11.
               </p>
             </div>
             <div class="project-details__tools-used">
               <h3 class="project-details__content-title">Tools Used</h3>
               <div class="skills">
-                <div class="skills__skill">HTML</div>
-                <div class="skills__skill">CSS</div>
-                <div class="skills__skill">JavaScript</div>
-                <div class="skills__skill">React</div>
-                <div class="skills__skill">SASS</div>
+                <div class="skills__skill">Debian</div>
+                <div class="skills__skill">Python</div>
+                <div class="skills__skill">Docker</div>
+                <div class="skills__skill">Shell</div>
                 <div class="skills__skill">GIT</div>
-                <div class="skills__skill">Shopify</div>
-                <div class="skills__skill">Wordpress</div>
-                <div class="skills__skill">Google ADS</div>
-                <div class="skills__skill">Facebook Ads</div>
-                <div class="skills__skill">Android</div>
-                <div class="skills__skill">IOS</div>
+                <div class="skills__skill">Jenkins</div>
               </div>
             </div>
             <div class="project-details__links">

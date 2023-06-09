@@ -111,20 +111,58 @@
             <div class="project-details__desc">
               <h3 class="project-details__content-title">Project Overview</h3>
               <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Neque alias tenetur minus quaerat
-                aliquid, aut provident blanditiis, deleniti aspernatur ipsam
-                eaque veniam voluptatem corporis vitae mollitia laborum corrupti
-                ullam rem?
+                Asterisk est une plateforme logicielle open-source qui permet de mettre en place un système de téléphonie complet basé sur le protocole SIP (Session Initiation Protocol).
+Composant central de XiVO, la bonne utilisation d'Asterisk est vitale pour notre produit. C'est en configurant ses fonctionnalités, ses diverses extensions et ses multiples paramètres que XiVO tire une part substantielle de ses capacités.
+
               </p>
               <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem?
+                Asterisk permet de router les appels et d'adapter leur comportement via des scripts de dialplan. Les appels, initiés via des requêtes SIP émises par les composants téléphoniques, entrent dans le dialplan via des contextes définis. En voici un exemple simple :
+              </p>
+              <pre style="font-size: 15px;">
+                ; extensions.conf
+
+                [default]
+                exten => s,1,Answer()                              ; Répond à l'appel
+                   same => n,Playback(welcome-message)             ; Lit un message d'accueil
+                   same => n,Hangup()                              ; Raccroche l'appel
+
+                exten => 1,1,Dial(SIP/extension1)                  ; Appel vers une extension SIP
+                   same => n,Hangup()
+
+                exten => 2,1,Dial(SIP/extension2)                  ; Appel vers une autre extension SIP
+                   same => n,Hangup()
+
+                exten => 9,1,NoOp(echo "Hello, Asterisk!")        ; Affiche un message dans la CLI
+                   same => n,Hangup()
+              </pre>
+              <p class="project-details__desc-para">
+                Asterisk peut donc appeller, raccrocher un appel entrant, logger, entre autres. Et XiVO met à disposition une multitude d'option pour configurer ces options et comportements sans avoir à écrire de dialplan directement.              </p>
+              <p class="project-details__desc-para">
+                Il est important pour nous de pouvoir tester ce dialplan. A notre connaissance, il n'existe pas encore de façon de le tester unitairement, sur les subroutines qui sont là-bas l'équivalent de ce que serait une fonction dans un langage de programmation. Cependant Asterisk a à sa disposition SIPp (SIP Performance Testing Tool), un outil open-source capable de simuler les appels et de tester ses performances et sa scalabilité.
+              </p>
+              <p class="project-details__desc-para">
+                Asterisk permet de router les appels et d'adapter leur comportement via des scripts de dialplan. Les appels, initiés via des requêtes SIP émises par les composants téléphoniques, entrent dans le dialplan via des contextes définis. En voici un exemple simple :
+              </p>
+              <p class="project-details__desc-para">
+                SIPp permet de simuler deux types de scénarios personnalisables sous la forme de fichier xml : User Agent Client (UAC) et User Agent Server (UAS). Dans un scénario UAC, vous pouvez définir des demandes d'INVITE, des réponses attendues et des actions à effectuer lors de la réception de certaines réponses. Ce scénario est donc actif, émet l'appel et attends d'Asterisk des actions spécifiées dans le test. Dans un scénario UAS, vous pouvez définir les actions à effectuer lors de la réception d'une demande d'INVITE, puis envoyer des réponses appropriées. Ce scénario est donc passif, mais comme l'UAC il attends un nombre définis de réponse pour être validés.
+              </p>
+              <p class="project-details__desc-para">
+                Dans le contexte d'un développement spécifique pour l'un de nos clients, j'ai écrit des extensions de scripts de dialplan. Si nous avons couvert les premières fonctionnalités par des tests manuels, certaines implémentations contenaient d'important tableaux de correspondance, où tel cas de figure précis devait déclencher tel message joué à l'appellant/à l'appellé, ce qu'Asterisk est capable de faire. Mais comment automatiser ceci ?
+              </p>
+              <p class="project-details__desc-para">
+                Une approche de test au cour du développement était d'écrire des extensions spécifiques dans le dialplan puis les stimuler au moyen de scénarios UAC pour vérifier les différents cas de figure. Ces scénarios étaient lancés depuis la machine de développement, où SIPp était disponible. La limitation évidente de ce test était qu'on ne vérifiait pas vraiment la section de dialplan intéressantes mais une section mockée de celui-ci.
+              </p>
+              <p class="project-details__desc-para">
+                Pour faire évoluer ce processus, il faudrait pouvoir lancer les scénarios UAS sur le serveur Asterisk contenant le dialplan que nous testons. Nous y sommes parvenus, grâce à une version containerisée de SIPp qui nous permettais de lancer les scénarios sans nous soucier d'installer l'outil de test sur une machine où il n'avait pas de raison d'être installée.
+              </p>
+              <p class="project-details__desc-para">
+                Voici la commande utilisée côté serveur en bouclant sur la variable ${suffix} :
+              </p>
+              <pre style="font-size: 15px;">
+                docker run --name sipp_"${suffix}" --mount type=bind,source=/tmp/scenarios,target=/tmp --rm --network=host ctaloi/sipp -sf /tmp/sipp_bye_"${suffix}".xml -m 1 -i ${SMM2} -p 12"${suffix}" > /dev/null
+              </pre>
+              <p class="project-details__desc-para">
+                Ces containers éphémères et les scripts les déployant nous ont permis, efficacement, rapidement, de tester des cas de figure qui auraient requis une vingtaine d'appels manuels à vérifier. C'est une brique, qui permet de maintenir le dialplan plus avant et de pouvoir développer avec confiance les scénarios futurs.
               </p>
             </div>
             <div class="project-details__tools-used">

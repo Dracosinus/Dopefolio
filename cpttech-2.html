@@ -84,12 +84,16 @@
     </header>
     <section class="project-cs-hero">
       <div class="project-cs-hero__content">
-        <h1 class="heading-primary">Project 2</h1>
+        <h1 class="heading-primary">Programmation Fonctionnelle</h1>
         <div class="project-cs-hero__info">
+          <p class="text-primary">          
+            La programmation fonctionnelle est un paradigme de programmation qui se concentre sur l'utilisation de fonctions pour résoudre des problèmes informatiques. Elle repose sur le principe que les fonctions sont des entités de première classe, c'est-à-dire qu'elles peuvent être traitées comme n'importe quelle autre valeur. 
+          </p>
           <p class="text-primary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-            in numquam incidunt earum quaerat cum fuga, atque similique natus
-            nobis sit.
+            Un concept clé de la programmation fonctionnelle est la notion de fonction pure. Une fonction pure est une fonction dont le résultat dépend uniquement de ses arguments et qui ne produit pas d'effets de bord. Cela signifie qu'une fonction pure, lorsqu'elle est appelée avec les mêmes arguments, renverra toujours le même résultat.
+          </p>
+          <p class="text-primary">
+            La programmation fonctionnelle s'appuie également sur le principe que les fonctions sont immutables et ne peuvent être modifiées.  A la place, elle encourage l'utilisation de fonctions d'ordre supérieur, c'est-à-dire des fonctions qui peuvent prendre d'autres fonctions en tant qu'arguments ou les renvoyer en tant que résultats. 
           </p>
         </div>
         <div class="project-cs-hero__cta">
@@ -109,54 +113,37 @@
           </div>
           <div class="project-details__content-main">
             <div class="project-details__desc">
-              <h3 class="project-details__content-title">Project Overview</h3>
+              <h3 class="project-details__content-title">Elements de preuve : Anecdotes</h3>
+              <h4 class="project-details__content-title">1 Scala</h4>
               <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Neque alias tenetur minus quaerat
-                aliquid, aut provident blanditiis, deleniti aspernatur ipsam
-                eaque veniam voluptatem corporis vitae mollitia laborum corrupti
-                ullam rem?
+                Ma première approche avec la programmation fonctionnelle s'est fait en entreprise sur notre codebase Scala. A ce moment là, mes souvenirs de Scala étaient plutôt lointains, car vieux d'un cours introductif à la programmation vieux de 2 ans. J'ai donc suivis les cours de Martin Odersky, le fondateur du langage, disponibles en ligne ici https://www.coursera.org/learn/scala-functional-programming. Et la marche était plutôt haute. Mais cela m'a permis de pouvoir contribuer un peu sur le projet xucserver, notre composant back-end le plus avancé, écrit en Scala.
+              </p>
+              <h4 class="project-details__content-title">2 Clojure</h4>
+              <p class="project-details__desc-para">
+                J'ai eu un cours dédié à la programmation fonctionnelle en 5e année à INTECH avec le langage Clojure. C'est un cours où j'ai pu m'investir et réutiliser les compétences acquises avec Scala.
+                L'utilisation de constantes plutôt que de variable et de fonctions récursives plutôt que de boucles itératives sont deux approches que nous avons appliquées lors des TDs et TPs de ce cours. 
+              </p>
+              <h4 class="project-details__content-title">3 Python</h4>
+              <p class="project-details__desc-para">
+                Contrairement à Clojure, Python n'est pas spécifiquement rattaché à la programmation fonctionnelle. On peut également faire de la programation impérative ou même Orientée Objet en Python. Mais l'approche fonctionnelle a de nombreux avantages, dont celui d'être particulièrement efficace à tester quand elle est combinée avec du TDD. Le TDD, ou Test-Driven-Development est une approche de pogrammation qui consiste à écrire des tests unitaires et/ou des tests d'intégrations avant que le code fonctionnel ait été écrit. Il s'agit de s'assurer que les cas d'usage que nous voulons couvrir soient effectivement satisfait par le code. Pour ce faire, on redouble d'attention lors de l'écriture des test et une fois ceux-cis écrits (et échouant) on peut coder les fonctions leur permettant de ne plus échouer.               
               </p>
               <p class="project-details__desc-para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                alias tenetur minus quaerat aliquid, aut provident blanditiis,
-                deleniti aspernatur ipsam eaque veniam voluptatem corporis vitae
-                mollitia laborum corrupti ullam rem?
+                C'est une approche que j'ai pu mettre en pratique sur le projet XiVO également, lors de l'écriture d'AGI Python, des scripts qui sont appelés par le dialplan asterisk. La gymnastique mentale du TDD n'est pas aisée, mais le résultat en vaut la peine. Une limite cependant est que les tests ainsi générés couvrent efficacement les cas standards mais rarement les cas limites et les variables inattendues.              
               </p>
-            </div>
-            <div class="project-details__tools-used">
-              <h3 class="project-details__content-title">Tools Used</h3>
-              <div class="skills">
-                <div class="skills__skill">HTML</div>
-                <div class="skills__skill">CSS</div>
-                <div class="skills__skill">JavaScript</div>
-                <div class="skills__skill">React</div>
-                <div class="skills__skill">SASS</div>
-                <div class="skills__skill">GIT</div>
-                <div class="skills__skill">Shopify</div>
-                <div class="skills__skill">Wordpress</div>
-                <div class="skills__skill">Google ADS</div>
-                <div class="skills__skill">Facebook Ads</div>
-                <div class="skills__skill">Android</div>
-                <div class="skills__skill">IOS</div>
-              </div>
-            </div>
+            </div>            
             <div class="project-details__links">
-              <h3 class="project-details__content-title">See Live</h3>
+              <h3 class="project-details__content-title">Liens des cours</h3>
               <a
-                href="#"
+                href="https://github.com/Dracosinus/clojure-course"
                 class="btn btn--med btn--theme project-details__links-btn"
                 target="_blank"
-                >Live Link</a
+                >Clojure à INTECH (github complété)</a
               >
               <a
-                href="#"
+                href="https://www.coursera.org/specializations/scala"
                 class="btn btn--med btn--theme-inv project-details__links-btn"
                 target="_blank"
-                >Code Link</a
+                >Scala Coursera</a
               >
             </div>
           </div>

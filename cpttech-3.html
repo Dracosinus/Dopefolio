@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Case Study of Project 3</title>
-    <meta name="description" content="Case study page of Project" />
+    <title>BS : Jenkins</title>
+    <meta name="description" content="Benoit (Dracosinus) SCHULER's Portfolio" />
+    <link rel="icon" href="assets/png/face_co1.png" type="image/png">
 
     <link rel="stylesheet" href="css/style.css" />
 
@@ -77,7 +78,7 @@
 
             <li class="header__sm-menu-link">
               <a href="./index.html#projects"> Réalisations </a>
-            </li>            
+            </li>
             <li class="header__sm-menu-link">
               <a href="./index.html#cpttech"> Compétences Techniques </a>
             </li>
@@ -96,7 +97,7 @@
         <h1 class="heading-primary">Jenkins</h1>
         <div class="project-cs-hero__info">
           <p class="text-primary">
-            Jenkins est une plateforme open-source d'intégration continue et de livraison continue (CI/CD). Elle permet aux équipes de développement de construire, tester et déployer automatiquement des logiciels de manière fiable et rapide. C'est lui qui fait le pont entre le code que nous versionnons sur git et les composants, paquets et containers qui sont installables chez les clients. Construire ces composants à la main est possible, ce n'est juste pas maintenable sur le long terme. En un clic, Jenkins non seulement livre les fichiers exploitables dont nous avons besoin mais exécute aussi les tests automatisés et les checks préalables pour nous assurer de la qualité de ce que nous produisons.
+            Jenkins est une plateforme open-source d'intégration continue et de livraison continue (CI/CD). Elle permet aux équipes de développement de construire, tester et déployer automatiquement des logiciels de manière fiable et rapide. C'est elle qui fait le pont entre le code versionné sur git et les composants, paquets et containers qui deviennent installables. Construire ces composants à la main est possible, ce n'est juste pas maintenable sur le long terme. Jenkins exécute aussi les tests automatisés et les checks préalables permettant de renforcer la qualité des logiciels produits.
           </p>
         </div>
       </div>
@@ -106,31 +107,25 @@
         <div class="project-details__content">
           <div class="project-details__content-main">
             <div class="project-details__desc">
-              <h3 class="project-details__content-title">Elements de preuve : Anecdotes</h3>
+              <h3 class="project-details__content-title">Éléments de preuve : Anecdotes</h3>
               <h4 class="project-details__content-title">1 Apprentissage</h4>
               <p class="project-details__desc-para">
-                Comme pour toutes technologie, il m'a fallu un temps d'adaptation pour comprendre le fonctionnement de Jenkins et la façon dont nous l'utilisons chez XiVO. Nous avions plusieurs jobs, au moins un par projet, certains jobs étant plus génériques et étant partagés. Ceux-ci étaient configurés pour prendre des paramètres, dont font partie en général le tag ou la branche du projet à builder. Une fois lancé, le job exécute successivement un certain nombres d'étapes définies à même le projet. Certaines sont des scripts, bash en général, d'autres des appels lançant d'autres jobs, comme des jobs de test.
-                Après être familiarisé avec notre processus de release, j'ai pu faire évoluer la structure du build des paquets debian sur Jenkins en faisant évoluer les jobs finaux de la pipeline et en y intégrant l'image docker debian-builder que j'ai construite (cf ...).
-              </p>
+                Comme pour toute technologie, il m'a fallu un temps d'adaptation pour comprendre le fonctionnement de Jenkins et la façon dont nous l'utilisons chez XiVO. Nous avions plusieurs jobs, au moins un par projet, certains jobs étant plus génériques et étant partagés. Ceux-ci étaient configurés pour prendre des paramètres, dont font partie en général le tag ou la branche du projet à construire. Une fois lancé, le job exécute successivement un certain nombre d'étapes définies à même le projet. Certaines sont des scripts, bash en général, d'autres des appels lançant d'autres jobs, comme des jobs de test. Après être familiarisé avec notre processus de release, j'ai pu faire évoluer la structure du build des paquets debian sur Jenkins en faisant évoluer les jobs finaux de la pipeline et en y intégrant l'image docker debian-builder que j'ai construite.              </p>
               <h4 class="project-details__content-title">2 Pipeline scriptée</h4>
               <p class="project-details__desc-para">
-                En explorant le sujet et en échangeant avec les collègues, nous avons constaté que les jobs jenkins tels que nous les utilisions comportaient des risques, et n'étaient pas des 'pipelines' au sens de jenkins. Le risque majeur est que la logique de ces jobs n'est pas versionnée : l'essentiel est configuré sur le serveur jenkins directement, ce qui peut être difficielement lisible, transférable ou maintenanble. Les pipelines scriptées de Jenkins sont des scripts qui, en un seul fichier, contiennent les mêmes étapes que les jobs mais dont la logique, ainsi confinée, est plus facilement lisible et surtout peut être versionnée avec le projet lui-même, rendant son évolution très transparente.
+                En explorant le sujet et en échangeant avec les collègues, nous avons constaté que les jobs jenkins tels que nous les utilisions comportaient des risques, et n'étaient pas des 'pipelines' au sens de jenkins. Le risque majeur est que la logique de ces jobs n'est pas versionnée : l'essentiel est configuré sur le serveur jenkins directement, ce qui peut être difficilement lisible, transférable ou maintenable. Les pipelines scriptées de Jenkins sont des scripts qui, en un seul fichier, contiennent les mêmes étapes que les jobs mais dont la logique, ainsi confinée, est plus facilement lisible et surtout peut être versionnée avec le projet lui-même, rendant son évolution très transparente.
               </p>
               <p class="project-details__desc-para">
-                Ne pouvant faire évoluer l'ensemble de nos jobs d'un coup, j'ai saisi l'opportunité des projets d'expoloration que sont ceux que nous mettons en oeuvre pour le service pro pour écrire une première pipeline scriptée, en convertissant par étape un job existant par son équivalent en script. Seules quelques étapes n'ont pas encore pu être transcrites convenablement, mais pour l'essentiel ce jalon était franchi.
+                Ne pouvant faire évoluer l'ensemble de nos jobs d'un coup, j'ai saisi une opportunité pour écrire une première pipeline scriptée, en convertissant par étape un job existant par son équivalent en script. Seules quelques étapes n'ont pas encore pu être transcrites convenablement, mais pour l'essentiel ce jalon était franchi.
               </p>
               <h4 class="project-details__content-title">3 Tag des packages</h4>
               <p class="project-details__desc-para">
-                Parmi les étapes manuelles qui ralentissent l'équipe, le tag des projets est un sujet du fond du placard. Tagger un projet est important, c'est une méthode professionnelle qui permet de garder un suivi de l'état du projet quand il a été buildé pour la version correspondante. Mais on ne peux pas le rater : supprimer un tag enlève toute la confiance que l'on peux avoir dans ceux-ci, car leur intérêt est la certitude de savoir ce que la version déployée chez le client sur telle LTS contient.
-                Aussi dans notre processus de release avions nous une étape préliminaire qui consistait à tagger correctement chaque paquet de la livraison. J'ai écri deux scripts bash, un capable de tagger un paquet et un autre une liste de paquets. Au fur et à mesure du développement j'ai ajouté des fonctionnalités. Un mode --dry-run pour simuler le script sans l'effectuer, ce qui est bien pratique quand on travaille avec un processus que l'on ne veux pas louper, une interface d'aide et des messages d'erreur pertinent, un rapport sur l'utilisation du script multiple listant 1-ce qui a été taggué, 2-ce qui l'était déjà, 3-ce qui a rencontré une erreur.
-                L'étape finale de cette intégration a été de déployer ces scripts sur la machine jenkins et de les intégré dans la pipeline de release. C'est une pipeline scriptée, à l'instar de celle que j'ai décrite dans la partie précédente. Après quelques modifications du script et quelques versions d'essai, le tag manuel n'était plus qu'un souvenir.
-              </p>
+                Parmi les étapes manuelles qui ralentissent l'équipe, le tag des projets est un sujet du fond du placard. Taguer un projet est important, c'est une méthode professionnelle qui permet de garder un suivi de l'état du projet quand il a été buildé pour la version correspondante. Mais on ne peut pas le rater : supprimer un tag enlève toute la confiance que l'on peut avoir dans ceux-ci, car leur intérêt est la certitude de savoir ce que la version déployée chez le client sur telle LTS contient. Aussi dans notre processus de release avions nous une étape préliminaire qui consistait à tagger correctement chaque paquet de la livraison. J'ai écrit deux scripts bash, un capable de tagger un paquet et un autre une liste de paquets. Au fur et à mesure du développement j'ai ajouté des fonctionnalités. Un mode --dry-run pour simuler le script sans l'effectuer, ce qui est bien pratique quand on travaille avec un processus que l'on ne veut pas louper, une interface d'aide et des messages d'erreur pertinent, un rapport sur l'utilisation du script multiple listant 1-ce qui a été tagué, 2-ce qui l'était déjà, 3-ce qui a rencontré une erreur. L'étape finale de cette intégration a été de déployer ces scripts sur la machine jenkins et de les intégrer dans la pipeline de release. C'est une pipeline scriptée, à l'instar de celle que j'ai décrite dans la partie précédente. Après quelques modifications du script et quelques versions d'essai, le tag manuel n'était plus qu'un souvenir.              </p>
               <h3 class="project-details__content-title">Ouverture</h3>
               <p class="project-details__desc-para">
-                J'ai une bonne vision de l'utilisation de jenkins, mais la plateforme bénéficie de nombreux plugins et approches plus moderne que ce que nous avons. Il reste de la route à faire pour poursuivre la conversion de nos jobs en pipeline scriptée et s'approcher peu à peu de l'objectif suivant : avoir l'équivalence d'un commit dans la branche principale générant automatiquement une version de test déployée avec le code associé.
-              </p>
+                J'ai une bonne vision de l'utilisation de jenkins, mais la plateforme bénéficie de nombreux plugins et approches plus modernes que ce que nous avons. Il reste de la route à faire pour poursuivre la conversion de nos jobs en pipeline scriptée et s'approcher peu à peu de l'objectif suivant : avoir l'équivalence d'un commit dans la branche principale générant automatiquement une version de test déployée avec le code associé.              </p>
               <p class="project-details__desc-para">
-                En outre, j'ai eu aussi l'occasion de découvrir ArgoCD à Intech, une autre plateforme de déploiement, plus à même de superviser les pipelines pour les architecture clusterisées. J'espère pouvoir la faire travailler de concert avec Jenkins quand l'occasion se présentera.
+                En outre, j'ai aussi eu l'occasion de découvrir ArgoCD à Intech, une autre plateforme de déploiement, plus à même de superviser les pipelines pour les architectures clusterisées. J'espère pouvoir la faire travailler de concert avec Jenkins quand l'occasion se présentera.
               </p>
             </div>
               <div class="project-details__links">
@@ -178,7 +173,7 @@
             </div>
           </div>
           <div class="main-footer__row main-footer__row-2">
-            <h4 class="heading heading-sm text-lt">Benoit SCHULER</h4>            
+            <h4 class="heading heading-sm text-lt">Benoit SCHULER</h4>
           </div>
         </div>
 
